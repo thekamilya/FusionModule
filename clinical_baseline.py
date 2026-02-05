@@ -70,6 +70,7 @@ def load_and_preprocess_data(filepath='mmist_data/clinical+genomic_split.csv'):
     for col in feature_columns:
         if col in df.columns:
             # Replace -1 with NaN
+            df[col] = df[col].fillna(0)
             df[col] = df[col].replace(-1, np.nan)
             # Fill with median for numeric features
             df[col] = df[col].fillna(df[col].median())
